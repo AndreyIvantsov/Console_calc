@@ -4,4 +4,11 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    add.cpp \
+    dev.cpp \
+    mult.cpp \
+    sub.cpp
+
+HEADERS += \
+    math_func.h
