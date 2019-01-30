@@ -1,9 +1,9 @@
 #ifndef MATH_FUNC_H
 #define MATH_FUNC_H
 
-int add(int a, int b);
-double division(int a, int b);
-int mult(int a, int b);
-int sub(int a, int b);
+double add(double a, double b);
+double division(double a, double b);
+double mult(double a, double b);
+double sub(double a, double b);
 
-#endif
+#endif // MATH_FUNC_H

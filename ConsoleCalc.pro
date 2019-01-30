@@ -11,4 +11,5 @@ SOURCES += \
     sub.cpp
 
 HEADERS += \
-    math_func.h
+    math_func.h \
+    err_const.h

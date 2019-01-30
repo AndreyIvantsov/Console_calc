@@ -7,7 +7,7 @@ void ShowMenu();
 int GetNomberOfAction();
 int GetMemberOfOperation(std::string membresName);
 
-int main(int argc, char const *argv[])
+int main() // int argc, char const *argv[]
 {
     int action = 0;
     std::string actionSign = "";
@@ -15,8 +15,8 @@ int main(int argc, char const *argv[])
 
     ShowMenu();
     action = GetNomberOfAction();
-    int a = GetMemberOfOperation("A");
-    int b = GetMemberOfOperation("B");
+    double a = GetMemberOfOperation("A");
+    double b = GetMemberOfOperation("B");
     std::string strA = std::to_string(a);
     std::string strB = std::to_string(b);
 
