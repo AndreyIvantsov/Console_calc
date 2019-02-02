@@ -7,7 +7,7 @@ void ShowMenu();
 int GetNomberOfAction();
 int GetMemberOfOperation(std::string membresName);
 
-int main(int argc, char const *argv[])
+int main() // int argc, char const *argv[]
 {
     int action = 0;
     std::string actionSign = "";
@@ -15,8 +15,11 @@ int main(int argc, char const *argv[])
 
     ShowMenu();
     action = GetNomberOfAction();
-    int a = GetMemberOfOperation("A");
-    int b = GetMemberOfOperation("B");
+//    int a = GetMemberOfOperation("A");
+//    int b = GetMemberOfOperation("B");
+    double a = 1.01;
+    double b = 4.04;
+    double r = 0.0;
     std::string strA = std::to_string(a);
     std::string strB = std::to_string(b);
 
@@ -24,22 +27,23 @@ int main(int argc, char const *argv[])
     {
         case 1:
             actionSign = " + ";
-            result = std::to_string(add(a, b));
+            r = add(a, b);
+            result = std::to_string(r);
             break;
 
         case 2:
             actionSign = " - ";
-            result = std::to_string(sub(a, b));
+//            result = std::to_string(sub(a, b));
             break;
 
         case 3:
             actionSign = " * ";
-            result = std::to_string(mult(a, b));
+//            result = std::to_string(mult(a, b));
             break;
         
         case 4:
             actionSign = " / ";
-            result = std::to_string(division(a, b));
+//            result = std::to_string(division(a, b));
             break;
 
         default:
@@ -57,10 +61,10 @@ void ShowMenu()
 {
     system("clear");
     std::cout << "Математические операции:" << std::endl;
-    std::cout << "1. Сложение" << std::endl;
+    std::cout << "1. Сложение"  << std::endl;
     std::cout << "2. Вычитание" << std::endl;
     std::cout << "3. Умножение" << std::endl;
-    std::cout << "4. Деление" << std::endl;
+    std::cout << "4. Деление"   << std::endl;
     std::cout << "------------------------" << std::endl;
 }
 
