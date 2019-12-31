@@ -1,12 +1,10 @@
 #include <iostream>
-#include <string>
-#include <cstdlib>
-#include "math_func.h"
+#include "calcmodel.h"
+#include "enum_math_action.h"
 
-void ShowMenu();
-int GetNomberOfAction();
-int GetMemberOfOperation(std::string membresName);
+using namespace std;
 
+<<<<<<< HEAD
 int main() // int argc, char const *argv[]
 {
     int action = 0;
@@ -49,33 +47,108 @@ int main() // int argc, char const *argv[]
 
     std::cout << "------------------------" << std::endl;
     std::cout << strA + actionSign + strB + " = " + result << std::endl;
+=======
+string MathActToStr(MathAction act)
+{
+    string result = "";
+>>>>>>> 559c6e7062d1b3f09d8f0267acf8fedcacbe82de
 
-    return 0;
+    switch (act) {
+    case MathAction::PLUS:
+        result = " + ";
+        break;
+    case MathAction::MINUS:
+        result = " - ";
+        break;
+    case MathAction::MULTIPLICATION:
+        result = " * ";
+        break;
+    case MathAction::DIVISION:
+        result = " / ";
+        break;
+    case MathAction::UNAR_MINUS:
+        result = "-(";
+        break;
+    case MathAction::SQRT:
+        result = "sqrt(";
+        break;
+    case MathAction::SIN:
+        result = "sin(";
+        break;
+    case MathAction::COS:
+        result = "cos(";
+        break;
+//    default:
+//        result = "err";
+//        break;
+    }
+    return result;
 }
 
-void ShowMenu()
+void TestCalc(CalcModel &calc, double a, double b, MathAction act)
 {
-    system("clear");
-    std::cout << "Математические операции:" << std::endl;
-    std::cout << "1. Сложение" << std::endl;
-    std::cout << "2. Вычитание" << std::endl;
-    std::cout << "3. Умножение" << std::endl;
-    std::cout << "4. Деление" << std::endl;
-    std::cout << "------------------------" << std::endl;
+    calc.PushOperand(a);
+    calc.PushOperand(b);
+
+    try
+    {
+        calc.PushMathAct(act);
+        double result = calc.PullResult();
+        cout << to_string(a) + MathActToStr(act) + to_string(b) + " = " + to_string(result) + '\n';
+    }
+    catch (std::runtime_error& e)
+    {
+        cerr << e.what() << endl;
+    }
 }
 
-int GetNomberOfAction()
+void TestCalc(CalcModel &calc, double a, MathAction act)
 {
-    int nomber = 0;
-    std::cout << ">  Введите номер операции [1-4]: ";
-    std::cin >> nomber;
-    return nomber;
+    calc.PushOperand(a);
+    calc.PushMathAct(act);
+    double result = calc.PullResult();
+    cout << MathActToStr(act) + to_string(a) + ") = " + to_string(result) + '\n';
 }
 
-int GetMemberOfOperation(std::string membresName)
+int main()
 {
+<<<<<<< HEAD
     int nomber = 0;
     std::cout << ">  Введите " + membresName  + " = ";
     std::cin >> nomber;
     return nomber;
+=======
+    cout << "Calc:" << endl;
+    CalcModel calc;
+
+    calc.Clear();
+    TestCalc(calc, 123.45, 76.55, MathAction::PLUS);
+
+    calc.Clear();
+    TestCalc(calc, 623.45, 23.45, MathAction::MINUS);
+
+    calc.Clear();
+    TestCalc(calc, 60.05, MathAction::UNAR_MINUS);
+
+    calc.Clear();
+    TestCalc(calc, 623.45, 23.45, MathAction::MULTIPLICATION);
+
+    calc.Clear();
+    TestCalc(calc, 30.49, 298.45, MathAction::DIVISION);
+
+    calc.Clear();
+    TestCalc(calc, 30.49, 0.0, MathAction::DIVISION);
+
+    calc.Clear();
+    TestCalc(calc, 64.00, MathAction::SQRT);
+
+    calc.Clear();
+    TestCalc(calc, 3.14 * 60 / 180, MathAction::COS);
+
+    calc.Clear();
+    TestCalc(calc, 3.14 * 30 / 180, MathAction::SIN);
+
+
+    return 0;
+>>>>>>> 559c6e7062d1b3f09d8f0267acf8fedcacbe82de
 }
